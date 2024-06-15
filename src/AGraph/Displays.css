@@ -1,0 +1,65 @@
+.graphContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 50%;
+    width: 15%;
+    border-style: solid;
+    border-color: white;
+    margin-right: 10px;
+    margin-left: 5px;
+    border-radius: 20px;
+}
+
+.graphBackground {
+    position: relative;  /* Ensure tooltips are positioned relative to this container */
+    background: rgb(254, 254, 255);
+    width: 100%;
+    display: flex;
+    justify-content: center;  /* Center children horizontally */
+    align-items: center;  /* Center children vertically */
+    height: 100%;
+    border-radius: 19px;
+    flex-direction: column;
+
+}
+
+.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;  /* Adjust as needed */
+    height: 100px;  /* Adjust as needed */
+    border-radius: 50%;  /* Makes the div circular */
+    background-color: #f0f0f0;  /* Adjust as needed */
+    color: #000;  /* Adjust as needed */
+    font-size: 20px;  /* Adjust as needed */
+    margin-top: 30px;
+}
+
+.infoButton {
+    position: absolute;  /* Ensure the button is positioned absolutely within the graphBackground */
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 24px;  /* Adjust as needed */
+    color: #000;  /* Adjust as needed */
+}
+
+.tooltip {
+    position: absolute;  /* Ensure the tooltip is positioned absolutely */
+    bottom: 40px;  /* Adjust as needed */
+    right: 0;
+    background-color: #333;  /* Change to a darker background for better visibility */
+    color: #fff;  /* Change to white text for better contrast */
+    padding: 10px;  /* Adjust as needed */
+    border-radius: 5px;  /* Adjust as needed */
+    font-size: 12px;  /* Adjust as needed */
+    z-index: 10;  /* Ensure the tooltip is on top */
+    white-space: nowrap;  /* Prevent text wrapping */
+}
+
+
