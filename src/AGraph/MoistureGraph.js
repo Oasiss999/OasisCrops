@@ -29,7 +29,7 @@ const MoistGraph = () => {
         datasets: [
             {
                 label: 'Temperature (°C)',
-                data: [0, 2, 5, 10, 8, 12, 15],
+                data: [0],
                 fill: false,
                 backgroundColor: 'rgba(75,192,192,0.4)',
                 borderColor: 'rgba(75,192,192,1)',
