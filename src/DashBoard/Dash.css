@@ -19,7 +19,7 @@
     display: flex;
     flex-direction: row;
     width: 90%; /* Subtract the total margin from the width */
-    border-width: 3px;
+    border-width: 2px;
     border-color: black;
     border-style: solid;
     box-sizing: border-box;
@@ -50,13 +50,20 @@
     border: none;
     font-size: 20px;
     color: #000;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.add-button-clicked {
+    transform: scale(0.1); /* Reduce size to 95% */
+    transition: transform 0.1s ease-in-out; /* Animate the transformation */
 }
 
 .monitorContainer {
     position: relative;
     display: flex;
     flex-direction: row;
-    border-width: 3px;
+    border-width: 2px;
     border-color: rgb(0, 0, 0);
     border-style: solid;
     box-sizing: border-box;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Displays.css';
 
 const Temp = () => {
-    const temperature = 72; // Replace with actual temperature
+    const temperature = 'NA'; // Replace with actual temperature
     const infoText = "This is the current temperature."; // Replace with actual information text
     const [showTooltip, setShowTooltip] = useState(false);
 
