@@ -178,6 +178,14 @@ input::-moz-focus-inner {
 
 .signUptxt{
     color: rgba(149, 211, 255, 0.756);
-    font-size: 20px;
+    font-size: 18px;
     font-family: 'Inter UI', Arial;
+    transition: color 300ms;
+    transition: all 0.5s ease;
+}
+
+.signUptxt:hover{
+  color: rgba(2, 87, 147, 0.756);
+  transform: scale(1.08);
+  font-family: 'Inter UI', Arial;
 }
