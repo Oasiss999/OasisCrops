@@ -1,6 +1,6 @@
 .Background1{
     background: rgb(2,0,36);
-    background: linear-gradient(180deg, rgb(81, 99, 236) 20%, rgb(141, 185, 255) 80%, rgb(0, 0, 0) 100%);
+    background: linear-gradient(180deg, rgb(0, 59, 51) 20%, rgb(0, 137, 105) 80%, rgb(0, 0, 0) 100%);
     position: fixed;
     top: 0;
     left: 0;
@@ -73,7 +73,7 @@ body {
 }
 .left {
 
-  background: white;
+  background: #ffffff;
   position: relative;
   width: 50%;
 
@@ -93,9 +93,10 @@ body {
   margin: 50px 40px 40px;
 }
 .eula {
-  color: #999;
-  font-size: 14px;
+  color: #003e29;
+  font-size: 18px;
   line-height: 1.5;
+  text-align: center;
   margin: 40px;
 }
 .right {
