@@ -1,6 +1,6 @@
 .Background1{
     background: rgb(2,0,36);
-    background: linear-gradient(180deg, rgb(81, 99, 236) 20%, rgb(141, 185, 255) 80%, rgb(0, 0, 0) 100%);
+    background: linear-gradient(180deg, rgb(0, 59, 51) 20%, rgb(0, 137, 105) 80%, rgb(0, 0, 0) 100%);
     position: fixed;
     top: 0;
     left: 0;
@@ -73,7 +73,7 @@ body {
 }
 .left {
 
-  background: white;
+  background: #ffffff;
   position: relative;
   width: 50%;
 
@@ -93,9 +93,10 @@ body {
   margin: 50px 40px 40px;
 }
 .eula {
-  color: #999;
-  font-size: 14px;
+  color: #003e29;
+  font-size: 18px;
   line-height: 1.5;
+  text-align: center;
   margin: 40px;
 }
 .right {
@@ -128,32 +129,45 @@ path {
   position: absolute;
 }
 label {
-  color:  #c2c2c5;
+  color:  #007552;
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   height: 16px;
   margin-top: 20px;
   margin-bottom: 5px;
 }
 input {
-  background: gray;
+  background: rgb(171, 171, 171);
   border: 0;
-  color: #f2f2f2;
+  color: #000000;
   font-size: 20px;
   height: 30px;
   line-height: 30px;
   outline: none !important;
   width: 100%;
 }
+
+input:focus {
+  background: rgb(255, 255, 255)
+}
+
 input::-moz-focus-inner { 
   border: 0; 
 }
 #submit {
-    background-color: rgb(86, 83, 83);
-  color: #bbbbd1;
+  background-color: rgb(12, 118, 76);
+  color: #000000;
   margin-top: 40px;
   transition: color 300ms;
+  transition: all 0.5s ease;
   border-radius: 100px;
+}
+
+#submit:hover {
+  background-color: rgb(6, 93, 58);
+  color: #ffffff;
+  transform: scale(1.08);
+
 }
 #submit:focus {
   color: #f2f2f2;
@@ -164,6 +178,14 @@ input::-moz-focus-inner {
 
 .signUptxt{
     color: rgba(149, 211, 255, 0.756);
-    font-size: 20px;
-    font-family: 'Inter UI', sans-serif;
+    font-size: 18px;
+    font-family: 'Inter UI', Arial;
+    transition: color 300ms;
+    transition: all 0.5s ease;
+}
+
+.signUptxt:hover{
+  color: rgba(2, 87, 147, 0.756);
+  transform: scale(1.08);
+  font-family: 'Inter UI', Arial;
 }

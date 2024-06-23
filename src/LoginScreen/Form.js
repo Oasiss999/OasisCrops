@@ -20,7 +20,7 @@ const Form = () => {
         <div className="container">
           <div className="left">
             <div className="login">Oasis Crops</div>
-            <div className="eula">A way to create your own garden of Eden</div>
+            <div className="eula">A way to create your own Garden of Eden</div>
           </div>
           <div className="right">
             <svg viewBox="0 0 320 300">
