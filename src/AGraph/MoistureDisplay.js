@@ -13,7 +13,7 @@ const Moist = () => {
     return (
         <div className='graphContainer'>
             <div className='graphBackground'>
-            <p>Current temperature </p>
+            <p>Current Moisture </p>
                 <div className='circle'>
                     {`${moisture} 💧 `}
                 </div>
