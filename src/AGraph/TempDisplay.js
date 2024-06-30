@@ -1,14 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect} from 'react';
 import './Displays.css';
+import {PINodeContext} from '../Contexts/PiNode.js';
+import {PiContext} from '../Contexts/PIArray.js';
 
 const Temp = () => {
-    const temperature = 'NA'; // Replace with actual temperature
+    const { getCurrentPINode } = useContext(PiContext);
+    let ip = null;
+    let temp = null;
+    const [temperature, setTemperature] = useState('N/A');
     const infoText = "This is the current temperature."; // Replace with actual information text
     const [showTooltip, setShowTooltip] = useState(false);
 
     const handleClick = () => {
         console.log('Info button clicked');
     };
+    useEffect(() => {
+        const updateTemperature = async () => {
+            try {
+                const _node = await getCurrentPINode(); 
+                const ip = _node.ipAddress; 
+                const response = await fetch(`http://${ip}:5001/Temp`);
+                const data = await response.json(); 
+                const temp = data.temperature; 
+                setTemperature(Math.round(temp)); // Round temperature to nearest whole number before updating state
+            } catch (error) {
+                console.error('Failed to fetch temperature:', error);
+            }
+        };
+    
+        const intervalId = setInterval(updateTemperature, 5000); // Update temperature every 5 seconds
+    
+        return () => clearInterval(intervalId); // Cleanup on component unmount
+    }, []);
 
     return (
         <div className='graphContainer'>

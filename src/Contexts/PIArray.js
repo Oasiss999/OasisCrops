@@ -1,9 +1,22 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useContext } from 'react';
+import { PiNodeContext } from './PiNode';
 
-export const PiNodesContext = createContext();
+export const PiContext = createContext();
 
-export const PiNodesProvider = ({ children }) => {
+export const PiProvider = ({ children }) => {
+  const { piNode } = useContext(PiNodeContext);
+  const [selectedPINode, setSelectedPINode] = useState(null);
+  const [currentPINode, setCurrentPINode] = useState(piNode || null);
   const [piNodes, setPiNodes] = useState([]);
+
+  const updatePINode = (node) => {
+    setSelectedPINode(node);
+    setCurrentPINode(node);
+  };
+
+  const getSelectedPINode = () => {
+    return selectedPINode;
+  };
 
   const addPiNode = (newNode) => {
     setPiNodes([...piNodes, newNode]);
@@ -21,9 +34,35 @@ export const PiNodesProvider = ({ children }) => {
     return piNodes.length;
   };
 
+  const returnNodeWithIP = (ip) => {
+    
+    return piNodes.find(node => node.ipAddress === ip);
+  };
+
+  const updateCurrentPINode = (node) => {
+    setCurrentPINode(node);
+  };
+
+  const getCurrentPINode = () => {
+    return currentPINode;
+  };
+
   return (
-    <PiNodesContext.Provider value={{ piNodes, addPiNode, deletePiNode, getAllPiNodes, getPiNodesSize }}>
+    <PiContext.Provider value={{
+      selectedPINode,
+      currentPINode,
+      piNodes,
+      updatePINode,
+      getSelectedPINode,
+      addPiNode,
+      deletePiNode,
+      getAllPiNodes,
+      getPiNodesSize,
+      returnNodeWithIP,
+      updateCurrentPINode,
+      getCurrentPINode
+    }}>
       {children}
-    </PiNodesContext.Provider>
+    </PiContext.Provider>
   );
 };
