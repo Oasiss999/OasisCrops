@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginPage from '../LoginScreen/Login.js';
+import SignUp from '../LoginScreen/SignUp.js';
 import Dash from '../DashBoard/Dash.js';
 import PIAdd from '../PIAdd/PIAdd.js';
 function RoutesComponent() {
@@ -8,6 +9,9 @@ function RoutesComponent() {
     <Router>
       <Routes>
         <Route path="/" element={<LoginPage />} />
+      </Routes>
+      <Routes>
+        <Route path="/SignUp" element={<SignUp />} />
       </Routes>
         <Routes>
             <Route path="/dashboard" element={<Dash />} />
