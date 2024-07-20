@@ -12,19 +12,26 @@ const Temp = () => {
     const [showTooltip, setShowTooltip] = useState(false);
 
     const handleClick = () => {
-        console.log('Info button clicked');
+        // console.log('Info button clicked');
     };
+
+    
+
     useEffect(() => {
         const updateTemperature = async () => {
             try {
                 const _node = await getCurrentPINode(); 
                 const ip = _node.ipAddress; 
+                // console.log(ip);
                 const response = await fetch(`http://${ip}:5001/Temp`);
                 const data = await response.json(); 
                 const temp = data.temperature; 
-                setTemperature(Math.round(temp)); // Round temperature to nearest whole number before updating state
+                setTemperature(Math.round(temp)); 
+                 
+
             } catch (error) {
-                console.error('Failed to fetch temperature:', error);
+                // console.error('Failed to fetch temperature:', error);
+                setTemperature('N/A');
             }
         };
     

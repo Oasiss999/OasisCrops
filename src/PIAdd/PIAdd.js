@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { PiContext } from '../Contexts/PIArray';
 import './PIAdd.css';
 import { PiNodeContext } from '../Contexts/PiNode';
-import axios from 'axios';
+
 
 const PIAdd = () => {
     const navigate = useNavigate();
@@ -57,7 +57,7 @@ const PIAdd = () => {
                 <label htmlFor="piName">PI Name:</label>
                 <input type="text" id="piName" name="piName" value={name} onChange={(e) => setName(e.target.value)} required />
 
-                <label htmlFor="piLocation">PI Location:</label>
+                <label htmlFor="piLocation">PI Location (Long,Late) with comma in between:</label>
                 <input type="text" id="piLocation" name="piLocation" value={location} onChange={(e) => setLocation(e.target.value)} />
 
                 <label htmlFor="piType">PI Type:</label>
