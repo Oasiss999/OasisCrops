@@ -10,6 +10,9 @@ import { useNavigate } from 'react-router-dom';
 import Monitor from '../Monitor/Monitor';
 import PINodeContext from '../Contexts/CurrentPI';
 import PI_Tiles_generator from './PI_Tiles_generator/index.js';
+import ChatBox from '../ChatBox/ChatBox.js';
+import {MessageProvider} from '../Contexts/Message.js';
+
 const Dash = () => {
 
     const contextValue = {
@@ -74,14 +77,13 @@ const Dash = () => {
                 </div>
                 
             </div>
+            
             <div style ={{display: 'flex', justifyContent: 'center'}}>
-                <div className= 'chatBoxContainer'>
-                    <div className='chatBoxBackground'>
-                        <p> ChatBox</p>
-                    </div>
-              
-                </div>
+                <MessageProvider>
+                <ChatBox />
+                </MessageProvider>
             </div>
+
             <PINodeContext.Provider value={contextValue}>
                 <Monitor />
             </PINodeContext.Provider>

@@ -1,0 +1,65 @@
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.Messages_Background {
+    overflow-y: auto;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 100%;
+    max-height: 80vh;
+    
+}
+
+
+
+.AMessage{
+    margin-top: 5px;
+    border-style: solid;
+    border-color: rgb(87, 154, 213);
+    border-width: 1px;
+    border-radius: 5px;
+    width: 40%;
+    height: 10%;
+    background-color: rgb(166, 206, 240);
+    font-size: 8px;
+    
+
+}
+
+.chatBoxContainer {
+    background-color: whitesmoke;
+    border-radius: 5px;
+    width: 80%;
+    height: 500px;
+    margin-top: 100px;
+    justify-self: center;
+    opacity: 1;
+    margin-bottom: 100px;
+    position: relative;
+    resize: both;
+    font-weight: 700;
+    overflow: auto; /* Makes content scrollable if it overflows */
+    background: linear-gradient(rgb(0, 108, 60), rgb(0, 0, 0));
+}
+
+.MessagesContainer{
+    height:85%;
+    
+}
+
+.TextBoxContainer{
+    height: 15%;
+    width: 80%;
+    display: flex;  
+    background-color: rgb(0, 108, 60);
+    align-self: center;
+    flex-direction: row;
+}
+
+.sendButton{
+    width:10%;
+}

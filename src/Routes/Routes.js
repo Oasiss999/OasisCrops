@@ -6,9 +6,12 @@ import Dash from '../DashBoard/Dash.js';
 import PIAdd from '../PIAdd/PIAdd.js';
 import { PiProvider } from '../Contexts/PIArray.js';
 import { PiNodeProvider } from '../Contexts/PiNode';
+import { MessagesProvider } from '../Contexts/Messages.js';
 
 function RoutesComponent() {
   return (
+    
+    <MessagesProvider>
     <PiNodeProvider>
     <PiProvider>
       <Router>
@@ -23,6 +26,8 @@ function RoutesComponent() {
       </Router>
     </PiProvider>
     </PiNodeProvider>
+    </MessagesProvider>
+   
   );
 }
 
