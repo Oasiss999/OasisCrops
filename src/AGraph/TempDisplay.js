@@ -27,9 +27,9 @@ const Temp = () => {
                 const data = await response.json(); 
                 const temp = data.temperature; 
                 setTemperature(Math.round(temp)); 
-                 
+                console.log('Temperature:', Math.round(temp));
 
-            } catch (error) {
+            } catch (error) { 
                 // console.error('Failed to fetch temperature:', error);
                 setTemperature('N/A');
             }
