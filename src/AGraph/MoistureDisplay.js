@@ -1,15 +1,13 @@
 import './Displays.css';
 import React, { useState,useEffect,useContext } from 'react';
 import { PiContext } from '../Contexts/PIArray';
-import { PiNodeContext } from '../Contexts/PiNode';
+
 
 
 const Moist = () => {
-    const { addPiNode } = useContext(PiContext);
-    const { createPiNode } = useContext(PiNodeContext);
+
     const { getCurrentPINode } = useContext(PiContext);
-    let moist = null;
-    let ip = null;
+   
 
     const [moisture, setMoisture] = useState('N/A');
     const infoText = "This is the current temperature."; // Replace with actual information text
@@ -30,6 +28,7 @@ const Moist = () => {
                 const data = await response.json(); 
                 const moist = data.moisture;  
                 setMoisture(Math.round(moist)); 
+                console.log('Moisture:', Math.round(moist));
                  
 
             } catch (error) {

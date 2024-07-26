@@ -7,14 +7,15 @@ export const MessagesProvider = ({ children }) => {
     const [messages, setMessages] = useState([]);
     
 
-    const AddMessage = (newMessage) => {
+    const AddMessage = (newMessage,yesDB) => {
         setMessages(messages => [...messages, newMessage]); // Use functional update form
     
         const data = {
             message: newMessage.Message
         };
-    
-        fetch('http://192.168.1.85:5020/chat', {
+        if(yesDB)
+            {
+        fetch('http://192.168.1.85:5020/dbChat', {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json',
@@ -29,8 +30,27 @@ export const MessagesProvider = ({ children }) => {
             setMessages(messages => [...messages, botMessage]); // Use functional update form
         })
         .catch((error) => {
-            console.error('Error:', error);
+            console.error('Error DB chat:', error);
         });
+        }else{
+            fetch('http://192.168.1.85:5020/chat', {
+                method: 'POST', 
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json()) // Parse the JSON response
+            .then(data => {
+                console.log('Success:', data);
+                // Assuming data contains Date, Time, and Message
+                const botMessage = { Date: data.Date, Time: data.Time, Message: data.Message, bot: true };
+                setMessages(messages => [...messages, botMessage]); // Use functional update form
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
     };
 
 
