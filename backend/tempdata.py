@@ -1,11 +1,22 @@
-import sqlite3
-
-connection = sqlite3.connect("temp.db")
+from sqlite3 import *
+connection = connect("temp.db")
 cursor = connection.cursor()
 
-cursor.execute("create table Temperature (rasberry_pi text, rasberry_temperature integer)") #Format - Temperature: (Temp Int)
+try:
+    cursor.execute("create table rasberryTemperatureData (Temperature integer)") #Format - (Temp Int)
 
-#if needed I can add more text if we want to display time and date
-#next step is to take the data from MoistureDisplay.js and input it into the db once I have real data
+except:
+    pass
 
-connection.close()
+finally:
+    with open("FakeTempData.txt", "r") as inFile:
+        for temperature in inFile:
+            cursor.execute("INSERT INTO rasberryTemperatureData (Temperature) VALUES (?)", [temperature])
+
+    #printting the Values in the database
+    cursor.execute("Select * from rasberryTemperatureData")
+    items = cursor.fetchall()
+    print(items)
+
+    connection.commit()
+    connection.close()
