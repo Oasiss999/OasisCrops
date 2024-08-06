@@ -1,4 +1,4 @@
-from sqlite3 import *
+import sqlite3
 from time import sleep
 import board
 from flask import Flask, jsonify
@@ -11,15 +11,14 @@ CORS(app)  # Enable CORS for all routes
 i2c_bus = board.I2C()
 ss = Seesaw(i2c_bus, addr=0x36)
 
-@app.route('/Temp')
-def get_Temp():
+@app.route('/Moisture')
+def get_Moisture():
     try:
-        _temp = ss.get_temp()
-        _f = (_temp * (9/5)) + 32
-        return jsonify({"temperature": _f})  # Use jsonify to return JSON response
+        _moisture = ss.moisture_read()
+        return jsonify({"moisture": _moisture})  # Use jsonify to return JSON response
     except Exception as e:
         return jsonify({"error": str(e)}), 500  # Return JSON error with status code
-        
+
 @app.route('/Ping')
 def PingTest():
     return jsonify({"message":"Connected"})
@@ -27,20 +26,22 @@ def PingTest():
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, threaded= True)
 
-connection = connect("temp.db")
+connection = sqlite3.connect("moisture.db")
 cursor = connection.cursor()
 
 while(True):
     try:
-        cursor.execute("create table rasberryTemperatureData (Temperature integer)") #Format - (Temp Int)
+        cursor.execute("create table rasberryMoistureData (Moisture integer)") #Format - (Temp Int)
 
+    #if needed I can add more text if we want to display time and date
     except:
-        temperature = get_Temp()
-        cursor.execute("INSERT INTO rasberryTemperatureData (Temperature) VALUES (?)", [temperature])
+        moisture = get_Moisture()
+        cursor.execute("INSERT INTO rasberryMoistureData (Moisture) VALUES (?)", [moisture])
         sleep(5)
 
-"""#printing the Values in the database
-cursor.execute("Select * from rasberryTemperatureData")
+
+"""#printting the Values in the database
+cursor.execute("Select * from rasberryMoistureData")
 items = cursor.fetchall()
 print(items)"""
 
