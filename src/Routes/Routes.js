@@ -7,6 +7,7 @@ import PIAdd from '../PIAdd/PIAdd.js';
 import { PiProvider } from '../Contexts/PIArray.js';
 import { PiNodeProvider } from '../Contexts/PiNode';
 import { MessagesProvider } from '../Contexts/Messages.js';
+import ChatPage from '../ChatPage/index.js'
 
 function RoutesComponent() {
   return (
@@ -19,9 +20,9 @@ function RoutesComponent() {
           <Route path="/" element={<LoginPage />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/dashboard" element={<Dash />} />
-          <Route path="/" element={<LoginPage />} />
           <Route path="/dashboard" element={<Dash />} />
           <Route path="/addpi" element={<PIAdd />} />
+          <Route path="/chatPage" element={<ChatPage />}/>
         </Routes>
       </Router>
     </PiProvider>
