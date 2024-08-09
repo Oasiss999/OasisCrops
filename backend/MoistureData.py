@@ -1,20 +1,17 @@
 import sqlite3
 from time import sleep
-import board
+
 from flask import Flask, jsonify
 from flask_cors import CORS  # Import CORS
-from adafruit_seesaw.seesaw import Seesaw
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
-i2c_bus = board.I2C()
-ss = Seesaw(i2c_bus, addr=0x36)
 
 @app.route('/Moisture')
 def get_Moisture():
     try:
-        _moisture = ss.moisture_read()
+        _moisture = 10
         return jsonify({"moisture": _moisture})  # Use jsonify to return JSON response
     except Exception as e:
         return jsonify({"error": str(e)}), 500  # Return JSON error with status code
@@ -28,6 +25,9 @@ if __name__ == '__main__':
 
 connection = sqlite3.connect("moisture.db")
 cursor = connection.cursor()
+
+
+
 
 while(True):
     try:
