@@ -1,6 +1,10 @@
 import sqlite3
 from time import sleep
 
+from backendCalls import *
+
+
+
 from flask import Flask, jsonify
 from flask_cors import CORS  # Import CORS
 
@@ -23,6 +27,7 @@ def PingTest():
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, threaded= True)
 
+
 connection = sqlite3.connect("moisture.db")
 cursor = connection.cursor()
 
@@ -35,7 +40,7 @@ while(True):
 
     #if needed I can add more text if we want to display time and date
     except:
-        moisture = get_Moisture()
+        moisture = get_moisture()
         cursor.execute("INSERT INTO rasberryMoistureData (Moisture) VALUES (?)", [moisture])
         sleep(5)
 
