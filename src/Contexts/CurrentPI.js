@@ -1,23 +1,24 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useContext } from 'react';
+import { PiNodeContext } from './PiNode';
 
-const PINodeContext = createContext();
+const CurrentNodeContext = createContext();
 
-export const PINodeProvider = ({ children }) => {
-    const [selectedPINode, setSelectedPINode] = useState(null);
+export const CurrentNodeProvider = ({ children }) => {
+    const { piNode, setPiNode } = useContext(PiNodeContext); // Assuming PiNodeContext provides piNode and setPiNode
 
     const updatePINode = (node) => {
-        setSelectedPINode(node);
+        setPiNode(node); // Update the current Pi node
     };
 
     const getPINode = () => {
-        return selectedPINode;
+        return piNode; // Return the current Pi node
     };
 
     return (
-        <PINodeContext.Provider value={{ selectedPINode, updatePINode, getPINode }}>
+        <CurrentNodeContext.Provider value={{ piNode, updatePINode, getPINode }}>
             {children}
-        </PINodeContext.Provider>
+        </CurrentNodeContext.Provider>
     );
 };
 
-export default PINodeContext;
+export default CurrentNodeContext;

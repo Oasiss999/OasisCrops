@@ -47,7 +47,7 @@ const SignUpForm = () => {
                 <input type="email" id="email" ref={emailRef} />
                 <label htmlFor="password">Password</label>
                 <input type="password" id="password" ref={passwordRef} />
-                <input type="submit" id="submit" value="Submit" ref={submitRef} />
+                <input type="submit" id="submit" value="Sign Up" ref={submitRef} />
                 <div style={{display: 'flex',justifyContent:'center', marginTop:'20px'}}>
                 <a href="/" className='logintxt'>Back to Login</a> 
                 </div>

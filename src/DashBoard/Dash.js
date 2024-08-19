@@ -7,9 +7,19 @@ import Moist from '../AGraph/MoistureDisplay';
 import TempGraph from '../AGraph/TempGraph';
 import MoistGraph from '../AGraph/MoistureGraph';
 import { useNavigate } from 'react-router-dom';
-
+import Monitor from '../Monitor/Monitor';
+import PINodeContext from '../Contexts/CurrentPI';
+import PI_Tiles_generator from './PI_Tiles_generator/index.js';
+import ChatBox from '../ChatBox/ChatBox.js';
+import {MessageProvider} from '../Contexts/Message.js';
 
 const Dash = () => {
+
+    const contextValue = {
+        selectedPINode: "Your Value Here",
+        updatePINode: () => {},
+        getPINode: () => {}
+      };
 
     const navigate = useNavigate();
     const [isClicked, setIsClicked] = useState(false);
@@ -35,15 +45,10 @@ const Dash = () => {
             <Header />
             <div style={{marginTop: '150px'}}>
                     <div  className='piContainer'>
-                    <div className='piBackground'>
-
-                        <A_pi />
-                        <A_pi />
-                        <A_pi />
-                        <A_pi />
-                        
-                        <button className={`add-button ${isClicked ? 'add-button-clicked' : ''}`} onClick={AddClicked}>+</button>
-                    </div>
+                        <div className='piBackground'>
+                            <PI_Tiles_generator />
+                            <button className={`add-button ${isClicked ? 'add-button-clicked' : ''}`} onClick={AddClicked}>+</button>
+                        </div>
                     </div>
                 <div className='monitorContainer'>
                     <div className='monitorBackground'>
@@ -72,15 +77,16 @@ const Dash = () => {
                 </div>
                 
             </div>
+            
             <div style ={{display: 'flex', justifyContent: 'center'}}>
-                <div className= 'chatBoxContainer'>
-                    <div className='chatBoxBackground'>
-                        <p> ChatBox</p>
-                    </div>
-              
-                </div>
+                <MessageProvider>
+                <ChatBox />
+                </MessageProvider>
             </div>
-                
+
+            <PINodeContext.Provider value={contextValue}>
+                <Monitor />
+            </PINodeContext.Provider>
        
             </div>
             

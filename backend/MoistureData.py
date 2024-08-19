@@ -1,10 +1,38 @@
 import sqlite3
 from time import sleep
+
 from backendCalls import *
+
+
+
+from flask import Flask, jsonify
+from flask_cors import CORS  # Import CORS
+
+app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
+
+
+@app.route('/Moisture')
+def get_Moisture():
+    try:
+        _moisture = 10
+        return jsonify({"moisture": _moisture})  # Use jsonify to return JSON response
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500  # Return JSON error with status code
+
+@app.route('/Ping')
+def PingTest():
+    return jsonify({"message":"Connected"})
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5001, threaded= True)
 
 
 connection = sqlite3.connect("moisture.db")
 cursor = connection.cursor()
+
+
+
 
 while(True):
     try:
